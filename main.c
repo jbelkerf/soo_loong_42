@@ -1,6 +1,11 @@
 #include "so_long.h"
 
 
+void puts_error(char *str)
+{
+	ft_printf("%s\n", str);
+	exit(1);
+}
 
 void ft_hook(void *nin)
 {
@@ -19,7 +24,46 @@ void ft_hook(void *nin)
 		ninja->img->instances[0].x += 5;
 }
 
-int check_the_map(char *file)
+void check_the_other_chars(char *file)
+{
+	int i;
+	int fd;
+	char *line;
+	t_map map;
+
+	if ((fd = open(file, O_RDONLY)) == -1)
+		puts_error("open error");
+	map.p = 0;
+	map.e = 0;
+	map.c = 0;
+	while (1)
+	{
+		if ((line = get_next_line(fd)) == NULL)
+			break ;
+		i = 0;
+		while (line[i])
+		{
+			if (line[i] == 'P')
+				map.p++;
+			if (line[i] == 'E')
+				map.e++;
+			if (line[i] == 'C')
+				map.c++;
+			i++;
+		}
+	}
+	if (map.p != 1 || map.e != 1 || map.c < 1)
+		puts_error("too many P or E or no C");
+}
+
+void is_the_map_valid(char *file)
+{
+	if (check_the_walls(file) == 1)
+		puts_error("invalid map");
+	check_the_other_chars(file);
+}
+
+int check_the_walls(char *file)
 {
 	t_map map;
 	int fd;
@@ -28,10 +72,7 @@ int check_the_map(char *file)
 	int i;
 
 	if ((fd = open(file, O_RDONLY)) == -1)
-	{
-		ft_printf("no file found\n");
-		exit(1);
-	}
+		puts_error("no file found");
 	map.width = -1;
 	while (1)
 	{
@@ -75,20 +116,10 @@ int main(int argc, char **argv)
 	t_ninja ninja;
 
 	if (argc != 2)
-	{
-		ft_printf("too many arguments\n");
-		exit(1);
-	}
-	if (check_the_map(argv[1]))
-	{
-		ft_printf("invlid map\n");
-		exit(1);
-	}
+		puts_error("too many arguments");
+	is_the_map_valid(argv[1]);
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "jbelkerf", true)))
-	{
-		ft_printf("mlx_init\n");
-		exit(1);
-	}
+		puts_error("mlx_init\n");
 	mlx_texture_t *imag_tex = mlx_load_png("img/imag.png");
 	mlx_image_t *imag = mlx_texture_to_image(mlx, imag_tex);
 	mlx_resize_image(imag, 70, 100);

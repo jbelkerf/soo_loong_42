@@ -27,4 +27,6 @@ typedef struct ninja
     mlx_image_t *img;
 }   t_ninja;
 
+int check_the_walls(char *file);
+
 #endif
