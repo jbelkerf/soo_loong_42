@@ -19,6 +19,18 @@ void ft_hook(void *nin)
 		ninja->img->instances[0].x += 5;
 }
 
+int check_the_map(char *file)
+{
+	t_map map;
+	int fd;
+
+	if ((fd = open(file, O_RDONLY)) == -1)
+	{
+		ft_printf("no file found\n");
+		exit(1);
+	}
+	return (0);
+}
 int main(int argc, char **argv)
 {
 	mlx_t *mlx;
@@ -26,17 +38,17 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		printf("too many arguments\n");
+		ft_printf("too many arguments\n");
 		exit(1);
 	}
-	if (parce_the_map(argv[1]))
+	if (check_the_map(argv[1]))
 	{
-		printf("invlid map\n");
+		ft_printf("invlid map\n");
 		exit(1);
 	}
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "jbelkerf", true)))
 	{
-		printf("mlx_init\n");
+		ft_printf("mlx_init\n");
 		exit(1);
 	}
 	mlx_texture_t *imag_tex = mlx_load_png("img/imag.png");
