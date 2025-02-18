@@ -1,7 +1,7 @@
 NAME = so_long
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I MLX42/include/MLX42 -I libft/include 
+CFLAGS =  -I MLX42/include/MLX42 -I libft/include 
 LFLAGS = -L MLX42/build -L /Users/jbelkerf/.brew/opt/glfw/lib -L libft -l mlx42 -l glfw -l ft \
 		 -framework Cocoa -framework OpenGL -framework IOKit
 

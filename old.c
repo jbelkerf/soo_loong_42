@@ -8,6 +8,8 @@
 
 static mlx_image_t* image;
 
+// -----------------------------------------------------------------------------
+
 int ft_pixel(int r, int g, int b, int a)
 {
 	return (r << 24 | g << 16 | b << 8 | a);
@@ -16,7 +18,7 @@ int ft_pixel(int r, int g, int b, int a)
 void ft_fill_image(void* param)
 {
 	(void)param;
-	int color = ft_pixel(0, 255, 0, 255); // White color
+	int color = ft_pixel(255, 255, 255, 255); // White color
 	for (int i = 0; i < image->width; ++i)
 	{
 		for (int y = 0; y < image->height; ++y)
@@ -26,9 +28,9 @@ void ft_fill_image(void* param)
 	}
 }
 
-void ft_hook(void *param)
+void ft_hook(void* param)
 {
-	mlx_t *mlx = param;
+	mlx_t* mlx = param;
 
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
@@ -42,35 +44,35 @@ void ft_hook(void *param)
 		image->instances[0].x += 5;
 }
 
-int main()
-{
-	mlx_t *mlx;
+// -----------------------------------------------------------------------------
 
-	if (!(mlx = mlx_init(WIDTH, HEIGHT, "jbelkerf", true)))
+int main(void)
+{
+	mlx_t* mlx;
+
+	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
 	{
-		printf("mlx_init\n");
-		exit(1);
+		puts(mlx_strerror(mlx_errno));
+		return (EXIT_FAILURE);
 	}
-	mlx_texture_t *imag_tex = mlx_load_png("imag.png");
-	mlx_image_t *imag = mlx_texture_to_image(mlx, imag_tex);
-	mlx_resize_image(imag, 64, 64);
-	mlx_image_to_window(mlx, imag, 1, 1);
-	if (!(image = mlx_new_image(mlx, 100, 100)))
-	{
-		printf("mlx_new_image\n");
-		exit(1);
-	}
-	if (mlx_image_to_window(mlx, image, 10, 10) == -1)
+	if (!(image = mlx_new_image(mlx, 128, 128)))
 	{
 		mlx_close_window(mlx);
-		printf("mlx_img_t_wnd\n");
-		exit(1);
+		puts(mlx_strerror(mlx_errno));
+		return (EXIT_FAILURE);
+	}
+	if (mlx_image_to_window(mlx, image, 0, 0) == -1)
+	{
+		mlx_close_window(mlx);
+		puts(mlx_strerror(mlx_errno));
+		return (EXIT_FAILURE);
 	}
 
 	ft_fill_image(NULL);
+
 	mlx_loop_hook(mlx, ft_hook, mlx);
+
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
-
-	return (0);
+	return (EXIT_SUCCESS);
 }
