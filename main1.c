@@ -84,12 +84,13 @@ char **map_to_str(char *file)
 
 	re = malloc((count_line(file) + 1) * sizeof(char *));
 	i = 0;
+	fd = open(file, O_RDONLY);
 	while (1)
 	{
 		if ((line = get_next_line(fd)) == NULL)
 			break ;
-		if (line[ft_strlen(line) - 1] == '\n')
-			line[ft_strlen(line) - 1] = 0;
+		if (line[strlen(line) - 1] == '\n')
+			line[strlen(line) - 1] = 0;
 		re[i] = line;
 		i++;
 	}
