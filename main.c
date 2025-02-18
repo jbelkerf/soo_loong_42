@@ -24,6 +24,7 @@ int check_the_map(char *file)
 	t_map map;
 	int fd;
 	char *line;
+	char *prev;
 	int i;
 
 	if ((fd = open(file, O_RDONLY)) == -1)
@@ -58,6 +59,13 @@ int check_the_map(char *file)
 				return 1;
 			i++;
 		}
+		prev = line;
+	}
+	while (prev[i])
+	{
+		if (prev[i] != '1')
+			return 1;
+		i++;
 	}
 	return (close(fd), 0);
 }
