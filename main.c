@@ -1,74 +1,52 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include "MLX42.h"
+#include "so_long.h"
 
-#define WIDTH 512
-#define HEIGHT 512
 
-static mlx_image_t* image;
 
-int ft_pixel(int r, int g, int b, int a)
+void ft_hook(void *nin)
 {
-	return (r << 24 | g << 16 | b << 8 | a);
-}
-
-void ft_fill_image(void* param)
-{
-	(void)param;
-	int color = ft_pixel(0, 255, 0, 255); // White color
-	for (int i = 0; i < image->width; ++i)
-	{
-		for (int y = 0; y < image->height; ++y)
-		{
-			mlx_put_pixel(image, i, y, color);
-		}
-	}
-}
-
-void ft_hook(void *param)
-{
-	mlx_t *mlx = param;
+	t_ninja *ninja = (t_ninja *)nin;
+	mlx_t *mlx = ninja->mlx;
 
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
-		image->instances[0].y -= 5;
+		ninja->img->instances[0].y -= 5;
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-		image->instances[0].y += 5;
+		ninja->img->instances[0].y += 5;
 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-		image->instances[0].x -= 5;
+		ninja->img->instances[0].x -= 5;
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-		image->instances[0].x += 5;
+		ninja->img->instances[0].x += 5;
 }
 
-int main()
+int main(int argc, char **argv)
 {
 	mlx_t *mlx;
+	t_ninja ninja;
 
+	if (argc != 2)
+	{
+		printf("too many arguments\n");
+		exit(1);
+	}
+	if (parce_the_map(argv[1]))
+	{
+		printf("invlid map\n");
+		exit(1);
+	}
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "jbelkerf", true)))
 	{
 		printf("mlx_init\n");
 		exit(1);
 	}
-	mlx_texture_t *imag_tex = mlx_load_png("imag.png");
+	mlx_texture_t *imag_tex = mlx_load_png("img/imag.png");
 	mlx_image_t *imag = mlx_texture_to_image(mlx, imag_tex);
-	mlx_resize_image(imag, 64, 64);
+	mlx_resize_image(imag, 70, 100);
 	mlx_image_to_window(mlx, imag, 1, 1);
-	if (!(image = mlx_new_image(mlx, 100, 100)))
-	{
-		printf("mlx_new_image\n");
-		exit(1);
-	}
-	if (mlx_image_to_window(mlx, image, 10, 10) == -1)
-	{
-		mlx_close_window(mlx);
-		printf("mlx_img_t_wnd\n");
-		exit(1);
-	}
-
-	ft_fill_image(NULL);
-	mlx_loop_hook(mlx, ft_hook, mlx);
+	ninja.img = imag;
+	ninja.mlx = mlx;
+	
+	mlx_loop_hook(mlx, ft_hook, (void *)&ninja);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 
