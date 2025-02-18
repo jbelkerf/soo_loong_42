@@ -15,9 +15,9 @@
 /*
  * no need for documentation but this func count the lenght of a giving string
  */
-size_t	ft_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (str[i])

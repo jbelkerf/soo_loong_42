@@ -23,13 +23,43 @@ int check_the_map(char *file)
 {
 	t_map map;
 	int fd;
+	char *line;
+	int i;
 
 	if ((fd = open(file, O_RDONLY)) == -1)
 	{
 		ft_printf("no file found\n");
 		exit(1);
 	}
-	return (0);
+	map.width = -1;
+	while (1)
+	{
+		i = 0;
+		if ((line = get_next_line(fd)) == NULL)
+			break ;
+		if (line[ft_strlen(line) - 1] == '\n')
+			line[ft_strlen(line) - 1] = 0;
+		if (map.width == -1)
+		{
+			map.width = ft_strlen(line);
+			while (line[i])
+			{
+				if (line[i] != '1')
+					return 1;
+				i++;
+			}
+			continue;
+		}
+		else if (map.width != ft_strlen(line))
+			return (close(fd), 1);
+		while (line[i])
+		{
+			if ((i == 0 || i == ft_strlen(line) - 1) && line[i] != '1')
+				return 1;
+			i++;
+		}
+	}
+	return (close(fd), 0);
 }
 int main(int argc, char **argv)
 {
