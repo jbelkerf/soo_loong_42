@@ -9,7 +9,7 @@ MLX = MLX42/build/libmlx42.a
 
 LIBFT = libft/libft.a 
 
-SRC = main.c check_walls.c check_symbols.c gnl/get_next_line.c gnl/get_next_line_utils.c
+SRC = main.c check_valid_path.c check_walls.c check_symbols.c gnl/get_next_line.c gnl/get_next_line_utils.c
 
 SRC_BONUS = 
 

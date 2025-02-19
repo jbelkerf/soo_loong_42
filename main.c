@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:22:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/19 11:40:29 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:23:32 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,50 +72,6 @@ char	**map_to_str(char *file)
 	return (re);
 }
 
-void	find_player(t_path *path, char **map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == 'P')
-			{
-				path->player_x = j;
-				path->player_y = i;
-				break ;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-void	fill_path(t_path *path, char **map)
-{
-	int	i;
-
-	find_player(path, map);
-	path->map_width = ft_strlen(map[0]);
-	i = 0;
-	while (map[i])
-		i++;
-	path->map_height = i;
-}
-
-void	is_there_valid_path(char **map)
-{
-	t_path	path;
-
-	fill_path(&path, map);
-	
-	ft_printf("px %i \n py %i\n width %i\n height %i\n", path.player_x + 1, path.player_y + 1, path.map_width, path.map_height);
-}
-
 void	is_the_map_valid(char *file)
 {
 	char	**map;
@@ -129,23 +85,23 @@ void	is_the_map_valid(char *file)
 
 int main(int argc, char **argv)
 {
-	mlx_t *mlx;
-	t_ninja ninja;
+	// mlx_t *mlx;
+	// t_ninja ninja;
 
 	if (argc != 2)
 		puts_error("too many arguments");
 	is_the_map_valid(argv[1]);
-	if (!(mlx = mlx_init(WIDTH, HEIGHT, "jbelkerf", true)))
-		puts_error("mlx_init\n");
-	mlx_texture_t *imag_tex = mlx_load_png("img/imag.png");
-	mlx_image_t *imag = mlx_texture_to_image(mlx, imag_tex);
-	mlx_resize_image(imag, 70, 130);
-	mlx_image_to_window(mlx, imag, 1, 1);
-	ninja.img = imag;
-	ninja.mlx = mlx;
-	mlx_loop_hook(mlx, ft_hook, (void *)&ninja);
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
+	// if (!(mlx = mlx_init(WIDTH, HEIGHT, "jbelkerf", true)))
+	// 	puts_error("mlx_init\n");
+	// mlx_texture_t *imag_tex = mlx_load_png("img/imag.png");
+	// mlx_image_t *imag = mlx_texture_to_image(mlx, imag_tex);
+	// mlx_resize_image(imag, 70, 130);
+	// mlx_image_to_window(mlx, imag, 1, 1);
+	// ninja.img = imag;
+	// ninja.mlx = mlx;
+	// mlx_loop_hook(mlx, ft_hook, (void *)&ninja);
+	// mlx_loop(mlx);
+	// mlx_terminate(mlx);
 
 	return (0);
 }

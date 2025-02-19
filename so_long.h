@@ -42,5 +42,6 @@ void	puts_error(char *str);
 void	free_map(char **map);
 void	free_map(char **map);
 void	ckeck_the_other_symbol(char **map);
+void	is_there_valid_path(char **map);
 
 #endif
