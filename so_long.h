@@ -28,6 +28,15 @@ typedef struct ninja
 	mlx_image_t	*img;
 }	t_ninja;
 
+typedef struct path
+{
+	int	player_x;
+	int	player_y;
+	int	exit_reachable;
+	int	map_width;
+	int	map_height;
+}	t_path;
+
 void	check_the_walls(char **map);
 void	puts_error(char *str);
 void	free_map(char **map);
