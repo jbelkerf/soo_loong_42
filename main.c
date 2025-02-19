@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:22:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/19 15:35:30 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/19 21:03:34 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,56 +38,16 @@ void	set_window_dimension(char *file, int *width, int *height)
 	*height = 50 * i;
 }
 
-void render_wall(char **map, mlx_t *mlx, mlx_image_t *wall_img)
-{
-    int y = 0;
-    while (map[y])
-    {
-        int x = 0;
-        while (map[y][x])
-        {
-            if (map[y][x] == '1') // If it's a wall
-                mlx_image_to_window(mlx, wall_img, x * 50, y * 50);
-            x++;
-        }
-        y++;
-    }
-}
-void render_flame(char **map, mlx_t *mlx, mlx_image_t *wall_img)
-{
-    int y = 0;
-    while (map[y])
-    {
-        int x = 0;
-        while (map[y][x])
-        {
-            if (map[y][x] == 'C') // If it's a wall
-                mlx_image_to_window(mlx, wall_img, x * 50, y * 50);
-            x++;
-        }
-        y++;
-    }
-}
-
 int	main(int argc, char **argv)
 {
 	mlx_t			*mlx;
 	t_ninja			ninja;
-	//ninja
 	mlx_texture_t	*imag_tex;
 	mlx_image_t		*imag;
-
-	//wall
-	mlx_texture_t	*wal_tex;
-	mlx_image_t		*wal_img;
-
-	//flame 
-	mlx_texture_t	*flame_tex;
-	mlx_image_t		*flame_img;
-
 	int				width;
 	int				height;
-	char	**map;
+	char			**map;
+	t_param			param;
 
 
 	if (argc != 2)
@@ -98,25 +58,16 @@ int	main(int argc, char **argv)
 	mlx = mlx_init(width, height, "jbelkerf", false);
 	if (!mlx)
 		puts_error("mlx_init\n");
-	//ninja
+	create_and_render(mlx, "wal.png", '1', map);
+	create_and_render(mlx, "flame.png", 'C', map);
 	imag_tex = mlx_load_png("img/imag.png");
 	imag = mlx_texture_to_image(mlx, imag_tex);
 	mlx_resize_image(imag, 50, 50);
-	//wall
-	wal_tex = mlx_load_png("wal.png");
-	wal_img = mlx_texture_to_image(mlx, wal_tex);
-	mlx_resize_image(wal_img, 50, 50);
-	//flame
-	flame_tex = mlx_load_png("flame.png");
-	flame_img = mlx_texture_to_image(mlx, flame_tex);
-	mlx_resize_image(flame_img, 50, 50);
-	
-	render_wall(map, mlx, wal_img);
-	render_flame(map, mlx, flame_img);
 	mlx_image_to_window(mlx, imag, 50, 50);
-	ninja.img = imag;
-	ninja.mlx = mlx;
-	mlx_loop_hook(mlx, ft_hook, (void *)&ninja);
+	set_ninja(imag, mlx, map, &ninja);
+	param.map = map;
+	param.ninja = &ninja;
+	mlx_loop_hook(mlx, ft_hook, (void *)&param);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (0);
