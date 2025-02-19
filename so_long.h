@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:35:15 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/19 13:35:41 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:36:07 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # include "./libft/libft.h"
 # include "./gnl/get_next_line.h"
 
-# define WIDTH 512
-# define HEIGHT 512
 
 typedef struct map
 {
@@ -54,5 +52,7 @@ void	free_map(char **map);
 void	free_map(char **map);
 void	ckeck_the_other_symbol(char **map);
 void	is_there_valid_path(char **map);
+char	**map_to_str(char *file);
+void	ft_hook(void *nin);
 
 #endif
