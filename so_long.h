@@ -30,5 +30,8 @@ typedef struct ninja
 
 void	check_the_walls(char **map);
 void	puts_error(char *str);
+void	free_map(char **map);
+void	free_map(char **map);
+void	ckeck_the_other_symbol(char **map);
 
 #endif

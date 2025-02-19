@@ -1,13 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/18 20:22:58 by jbelkerf          #+#    #+#             */
+/*   Updated: 2025/02/19 10:49:13 by jbelkerf         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-
-void puts_error(char *str)
-{
-	ft_printf("%s\n", str);
-	exit(1);
-}
-
-void ft_hook(void *nin)
+void	ft_hook(void *nin)
 {
 	t_ninja *ninja = (t_ninja *)nin;
 	mlx_t *mlx = ninja->mlx;
@@ -24,92 +29,59 @@ void ft_hook(void *nin)
 		ninja->img->instances[0].x += 5;
 }
 
-void check_the_other_chars(char *file)
+int	count_line(char *file)
 {
-	int i;
-	int fd;
-	char *line;
-	t_map map;
+	int		fd;
+	int		line_count;
+	char	*str;
 
-	if ((fd = open(file, O_RDONLY)) == -1)
-		puts_error("open error");
-	map.p = 0;
-	map.e = 0;
-	map.c = 0;
+	fd = open(file, O_RDONLY);
+	line_count = 0;
 	while (1)
 	{
-		if ((line = get_next_line(fd)) == NULL)
+		if ((str = get_next_line(fd)) == NULL)
 			break ;
-		i = 0;
-		while (line[i])
-		{
-			if (line[i] == 'P')
-				map.p++;
-			if (line[i] == 'E')
-				map.e++;
-			if (line[i] == 'C')
-				map.c++;
-			i++;
-		}
+		line_count++;
+		free(str);
 	}
-	if (map.p != 1 || map.e != 1 || map.c < 1)
-		puts_error("too many P or E or no C");
+	close(fd);
+	return (line_count);
 }
 
-void is_the_map_valid(char *file)
+char	**map_to_str(char *file)
 {
-	if (check_the_walls(file) == 1)
-		puts_error("invalid map");
-	check_the_other_chars(file);
-}
+	int		fd;
+	char	*line;
+	char	**re;
+	int		i;
 
-int check_the_walls(char *file)
-{
-	t_map map;
-	int fd;
-	char *line;
-	char *prev;
-	int i;
-
-	if ((fd = open(file, O_RDONLY)) == -1)
-		puts_error("no file found");
-	map.width = -1;
+	re = malloc((count_line(file) + 1) * sizeof(char *));
+	i = 0;
+	fd = open(file, O_RDONLY);
 	while (1)
 	{
-		i = 0;
 		if ((line = get_next_line(fd)) == NULL)
 			break ;
 		if (line[ft_strlen(line) - 1] == '\n')
 			line[ft_strlen(line) - 1] = 0;
-		if (map.width == -1)
-		{
-			map.width = ft_strlen(line);
-			while (line[i])
-			{
-				if (line[i] != '1')
-					return 1;
-				i++;
-			}
-			continue;
-		}
-		else if (map.width != ft_strlen(line))
-			return (close(fd), 1);
-		while (line[i])
-		{
-			if ((i == 0 || i == ft_strlen(line) - 1) && line[i] != '1')
-				return 1;
-			i++;
-		}
-		prev = line;
-	}
-	while (prev[i])
-	{
-		if (prev[i] != '1')
-			return 1;
+		re[i] = line;
 		i++;
 	}
-	return (close(fd), 0);
+	re[i] = NULL;
+	close(fd);
+	return (re);
 }
+
+void	is_the_map_valid(char *file)
+{
+	char	**map;
+
+	map = map_to_str(file);
+	check_the_walls(map);
+	ckeck_the_other_symbol(map);
+}
+
+
 int main(int argc, char **argv)
 {
 	mlx_t *mlx;
@@ -126,7 +98,6 @@ int main(int argc, char **argv)
 	mlx_image_to_window(mlx, imag, 1, 1);
 	ninja.img = imag;
 	ninja.mlx = mlx;
-	
 	mlx_loop_hook(mlx, ft_hook, (void *)&ninja);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
