@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:20:49 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/19 13:23:16 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:34:39 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	fill_path(t_path *path, char **map)
 	path->map_height = i;
 	path->exit_reachable = 0;
 }
-
 
 void	take_the_path(t_path *path, char **map, int x, int y)
 {
