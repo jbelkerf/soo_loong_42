@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:22:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/19 21:03:34 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/19 21:23:03 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	main(int argc, char **argv)
 	set_ninja(imag, mlx, map, &ninja);
 	param.map = map;
 	param.ninja = &ninja;
-	mlx_loop_hook(mlx, ft_hook, (void *)&param);
+	mlx_key_hook(mlx, ft_hook, (void *)&param);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (0);
