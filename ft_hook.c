@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:24:42 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/20 18:08:23 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:39:42 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	print_map(char **map)
 	int	i;
 
 	i = 0;
-	system("clear");
-	ft_printf("\n");
 	while (map[i])
 	{
 		ft_printf("%s\n", map[i]);
@@ -52,9 +50,11 @@ void	ft_hook(mlx_key_data_t keydata, void *params)
 	mlx_t	*mlx;
 	int		new_x;
 	int		new_y;
+	int		move_count;
 
 	param = (t_param *)params;
 	mlx = param->ninja->mlx;
+	move_count = 0;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(mlx);
 	new_x = param->ninja->x;
@@ -72,8 +72,10 @@ void	ft_hook(mlx_key_data_t keydata, void *params)
 			new_x++;
 		if (param->map[new_y][new_x] == 'E' && can_go_out(param->map))
 		{
-			ft_printf("congrats\n");
 			mlx_close_window(mlx);
+			system("clear");
+			ft_printf("congrats\n");
+			exit (0);
 		}
 		if (param->map[new_y][new_x] != '1' && param->map[new_y][new_x] != 'E')
 		{
@@ -95,9 +97,13 @@ void	ft_hook(mlx_key_data_t keydata, void *params)
 			param->map[new_y][new_x] = 'P';
 			param->ninja->x = new_x;
 			param->ninja->y = new_y;
+			param->ninja->move_count++;
+			system("clear");
 		}
 		param->ninja->img->instances[0].x = param->ninja->x * 50;
 		param->ninja->img->instances[0].y = param->ninja->y * 50;
+		print_map(param->map);
+		ft_printf("\nmoves are : %i\n",param->ninja->move_count);
 		//print_map(param->map);
 	}
 }

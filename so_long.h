@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:35:15 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/20 17:49:31 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:35:59 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct ninja
 	mlx_image_t	*img;
 	int			x;
 	int			y;
+	int			move_count;
 }	t_ninja;
 
 typedef struct path

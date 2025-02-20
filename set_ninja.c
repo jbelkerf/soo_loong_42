@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 20:36:06 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/19 20:42:25 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:36:23 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ void	set_ninja(mlx_image_t *img, mlx_t *mlx, char **map, t_ninja *ninja)
 	ninja->img = img;
 	ninja->mlx = mlx;
 	find_ninja(ninja, map);
+	ninja->move_count = 0;
 }
