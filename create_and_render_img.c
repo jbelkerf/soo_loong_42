@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 18:52:12 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/19 20:02:53 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/20 17:29:36 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	render_img(char **map, mlx_t *mlx, mlx_image_t *wall_img, char symbol)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == symbol)
+			if (map[y][x] == symbol || (symbol == '0' && map[y][x] == 'P'))
 				mlx_image_to_window(mlx, wall_img, x * 50, y * 50);
 			x++;
 		}
@@ -31,7 +31,7 @@ void	render_img(char **map, mlx_t *mlx, mlx_image_t *wall_img, char symbol)
 	}
 }
 
-void	create_and_render(mlx_t *mlx, char *img_file, int symbol, char **map)
+mlx_image_t	*create_and_render(mlx_t *mlx, char *img_file, int symbol, char **map)
 {
 	mlx_texture_t	*img_tex;
 	mlx_image_t		*img;
@@ -40,4 +40,5 @@ void	create_and_render(mlx_t *mlx, char *img_file, int symbol, char **map)
 	img = mlx_texture_to_image(mlx, img_tex);
 	mlx_resize_image(img, 50, 50);
 	render_img(map, mlx, img, symbol);
+	return (img);
 }

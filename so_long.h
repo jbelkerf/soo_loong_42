@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:35:15 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/19 21:16:02 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/20 17:49:31 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ typedef struct map
 	int	e;
 }	t_map;
 
+typedef struct images
+{
+	mlx_image_t	*collection;
+	mlx_image_t	*door;
+	mlx_image_t	*white;
+}	t_images;
+
 typedef struct ninja
 {
 	mlx_t		*mlx;
@@ -50,19 +57,20 @@ typedef struct path
 
 typedef struct hook_param
 {
-	t_ninja	*ninja;
-	char	**map;
+	t_ninja		*ninja;
+	char		**map;
+	t_images	*imgs;
 }	t_param;
 
-void	check_the_walls(char **map);
-void	puts_error(char *str);
-void	free_map(char **map);
-void	free_map(char **map);
-void	ckeck_the_other_symbol(char **map);
-void	is_there_valid_path(char **map);
-char	**map_to_str(char *file);
-void	ft_hook(mlx_key_data_t keydata, void *params);
-void	set_ninja(mlx_image_t *img, mlx_t *mlx, char **map, t_ninja *ninja);
-void	create_and_render(mlx_t *mlx, char *img_file, int symbol, char **map);
+void		check_the_walls(char **map);
+void		puts_error(char *str);
+void		free_map(char **map);
+void		free_map(char **map);
+void		ckeck_the_other_symbol(char **map);
+void		is_there_valid_path(char **map);
+char		**map_to_str(char *file);
+void		ft_hook(mlx_key_data_t keydata, void *params);
+void		set_ninja(mlx_image_t *img, mlx_t *mlx, char **map, t_ninja *ninja);
+mlx_image_t	*create_and_render(mlx_t *mlx, char *img_file, int symbol, char **map);
 
 #endif

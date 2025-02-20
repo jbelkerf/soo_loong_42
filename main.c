@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:22:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/19 21:23:03 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/20 17:49:54 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	main(int argc, char **argv)
 	int				height;
 	char			**map;
 	t_param			param;
+	t_images		imgs;
 
 
 	if (argc != 2)
@@ -58,15 +59,18 @@ int	main(int argc, char **argv)
 	mlx = mlx_init(width, height, "jbelkerf", false);
 	if (!mlx)
 		puts_error("mlx_init\n");
+	imgs.white = create_and_render(mlx, "white.png", '0', map);
+	imgs.door = create_and_render(mlx, "porte.png", 'E', map);
 	create_and_render(mlx, "wal.png", '1', map);
-	create_and_render(mlx, "flame.png", 'C', map);
+	imgs.collection = create_and_render(mlx, "flame.png", 'C', map);
 	imag_tex = mlx_load_png("img/imag.png");
 	imag = mlx_texture_to_image(mlx, imag_tex);
 	mlx_resize_image(imag, 50, 50);
-	mlx_image_to_window(mlx, imag, 50, 50);
 	set_ninja(imag, mlx, map, &ninja);
 	param.map = map;
 	param.ninja = &ninja;
+	param.imgs = &imgs;
+	mlx_image_to_window(mlx, imag, ninja.x * 50, ninja.y * 50);
 	mlx_key_hook(mlx, ft_hook, (void *)&param);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
