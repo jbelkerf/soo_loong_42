@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/02/22 17:21:12 by jbelkerf          #+#    #+#              #
+#    Updated: 2025/02/22 17:21:30 by jbelkerf         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = so_long
 
 CC = cc
@@ -9,7 +21,10 @@ MLX = MLX42/build/libmlx42.a
 
 LIBFT = libft/libft.a 
 
-SRC = main.c hook_utils.c check_non_wanted_symbols.c reachable_collectible.c create_and_render_img.c ft_hook.c map_to_str.c check_valid_path.c check_walls.c check_symbols.c gnl/get_next_line.c gnl/get_next_line_utils.c
+SRC = main.c get_images.c hook_utils.c check_non_wanted_symbols.c \
+reachable_collectible.c create_and_render_img.c ft_hook.c map_to_str.c \
+check_valid_path.c check_walls.c check_symbols.c gnl/get_next_line.c \
+gnl/get_next_line_utils.c
 
 SRC_BONUS = 
 
