@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 16:46:23 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 16:55:54 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 17:12:16 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	move_the_player(t_param *param, int new_x, int new_y)
 	system("clear");
 }
 
-void	eat_the_collectible(mlx_t *mlx, t_param *param, int new_x, int new_y)
+void	eat_col(mlx_t *mlx, t_param *param, int new_x, int new_y)
 {
 	param->map[new_y][new_x] = '0';
 	mlx_delete_image(mlx, param->imgs->col);

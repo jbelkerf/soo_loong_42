@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:22:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 16:56:53 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 17:02:03 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ void	get_images(mlx_t *mlx, t_param *param)
 int	main(int argc, char **argv)
 {
 	mlx_t			*mlx;
-	int				width;
-	int				height;
 	t_param			param;
 	t_ninja			ninja;
 	t_images		imgs;
@@ -88,8 +86,8 @@ int	main(int argc, char **argv)
 		puts_error("too many arguments");
 	param.map = map_to_str(argv[1]);
 	is_the_map_valid(argv[1]);
-	set_window_dimension(argv[1], &width, &height);
-	mlx = mlx_init(width, height, "jbelkerf", false);
+	set_window_dimension(argv[1], &(param.mlx_width), &(param.mlx_height));
+	mlx = mlx_init(param.mlx_width, param.mlx_height, "jbelkerf game", false);
 	if (!mlx)
 		puts_error("mlx_init\n");
 	get_images(mlx, &param);
