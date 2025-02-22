@@ -6,7 +6,7 @@
 #    By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 17:21:12 by jbelkerf          #+#    #+#              #
-#    Updated: 2025/02/22 20:03:12 by jbelkerf         ###   ########.fr        #
+#    Updated: 2025/02/22 20:20:03 by jbelkerf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ all: $(NAME)
 $(NAME): $(MLX) $(LIBFT) $(SRC)
 	$(CC) $(CFLAGS) $(SRC) $(LFLAGS) -o $(NAME)
 
-bonus: $(MLX) $(LIBFT) $(SRC_BONUS)
+bonus: $(MLX) $(LIBFT) $(SRC_BONUS) 
 	$(CC) $(CFLAGS) $(SRC_BONUS) $(LFLAGS) -o $(NAME)
 
 $(MLX):

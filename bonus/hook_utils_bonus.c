@@ -6,12 +6,11 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 16:46:23 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 19:59:24 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 20:16:46 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
 int	can_go_out(char **map)
 {
 	int	i;
@@ -55,15 +54,18 @@ void	move_the_player(t_param *param, int new_x, int new_y)
 
 void	eat_col(mlx_t *mlx, t_param *param, int new_x, int new_y)
 {
+	mlx_image_t	*img;
+
 	param->map[new_y][new_x] = '0';
 	mlx_delete_image(mlx, param->imgs->col);
 	mlx_delete_image(mlx, param->imgs->white);
-	param->imgs->col = create_render(mlx, "img/C.png", 'C', param->map);
-	param->imgs->white = create_render(mlx, "img/0.png", '0', param->map);
-	param->imgs->ninja = create_render(mlx, "img/P.png", 'P', param->map);
+	param->imgs->col = create_render(mlx, "textures/C.png", 'C', param->map);
+	param->imgs->white = create_render(mlx, "textures/0.png", '0', param->map);
+	param->imgs->ninja = create_render(mlx, "textures/P.png", 'P', param->map);
 	if (can_go_out(param->map))
 	{
 		mlx_delete_image(mlx, param->imgs->door);
-		param->imgs->door = create_render(mlx, "img/E2.png", 'E', param->map);
+		img = create_render(mlx, "textures/E2.png", 'E', param->map);
+		param->imgs->door = img;
 	}
 }
