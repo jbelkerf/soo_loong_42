@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 18:52:12 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 13:55:38 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 16:54:22 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	render_img(char **map, mlx_t *mlx, mlx_image_t *wall_img, char symbol)
 	}
 }
 
-mlx_image_t	*create_and_render(mlx_t *mlx, char *img_file, int symbol, char **map)
+mlx_image_t	*create_render(mlx_t *mlx, char *img_file, int symbol, char **map)
 {
 	mlx_texture_t	*img_tex;
 	mlx_image_t		*img;

@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:22:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 14:32:17 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 16:56:53 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ void	get_images(mlx_t *mlx, t_param *param)
 	find_ninja(param, param->map);
 	param->mlx = mlx;
 	param->ninja->move_count = 0;
-	param->imgs->white = create_and_render(mlx, "img/0.png", '0', param->map);
-	param->imgs->door = create_and_render(mlx, "img/E.png", 'E', param->map);
-	param->imgs->col = create_and_render(mlx, "img/C.png", 'C', param->map);
-	param->imgs->wal = create_and_render(mlx, "img/1.png", '1', param->map);
-	param->imgs->ninja = create_and_render(mlx, "img/P.png", 'P', param->map);
+	param->imgs->white = create_render(mlx, "img/0.png", '0', param->map);
+	param->imgs->door = create_render(mlx, "img/E.png", 'E', param->map);
+	param->imgs->col = create_render(mlx, "img/C.png", 'C', param->map);
+	param->imgs->wal = create_render(mlx, "img/1.png", '1', param->map);
+	param->imgs->ninja = create_render(mlx, "img/P.png", 'P', param->map);
 }
 
 int	main(int argc, char **argv)

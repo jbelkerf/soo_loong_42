@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 16:46:23 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 16:50:28 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 16:55:54 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ void	eat_the_collectible(mlx_t *mlx, t_param *param, int new_x, int new_y)
 	param->map[new_y][new_x] = '0';
 	mlx_delete_image(mlx, param->imgs->col);
 	mlx_delete_image(mlx, param->imgs->white);
-	param->imgs->col = create_and_render(mlx, "img/C.png", 'C', param->map);
-	param->imgs->white = create_and_render(mlx, "img/0.png", '0', param->map);
-	param->imgs->ninja = create_and_render(mlx, "img/P.png", 'P', param->map);
+	param->imgs->col = create_render(mlx, "img/C.png", 'C', param->map);
+	param->imgs->white = create_render(mlx, "img/0.png", '0', param->map);
+	param->imgs->ninja = create_render(mlx, "img/P.png", 'P', param->map);
 	if (can_go_out(param->map))
 	{
 		mlx_delete_image(mlx, param->imgs->door);
-		param->imgs->door = create_and_render(mlx, "img/E2.png", 'E', param->map);
+		param->imgs->door = create_render(mlx, "img/E2.png", 'E', param->map);
 	}
 }

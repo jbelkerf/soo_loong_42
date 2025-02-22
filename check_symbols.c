@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:45:03 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/19 10:49:21 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 16:53:33 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,5 @@ void	ckeck_the_other_symbol(char **map)
 		i++;
 	}
 	if (symbol.p != 1 || symbol.e != 1 || symbol.c < 1)
-	{
-		free_map(map);
-		puts_error("too many P or E or no C");
-	}
+		free_map_and_error("too many P or E or no C", map);
 }
