@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:24:42 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/20 18:39:42 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 11:41:36 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ void	ft_hook(mlx_key_data_t keydata, void *params)
 				param->map[new_y][new_x] = '0';
 				mlx_delete_image(mlx, param->imgs->collection);
 				mlx_delete_image(mlx, param->imgs->white);
-				param->imgs->collection = create_and_render(mlx, "flame.png", 'C', param->map);
-				param->imgs->white = create_and_render(mlx, "white.png", '0', param->map);
+				param->imgs->collection = create_and_render(mlx, "img/flame.png", 'C', param->map);
+				param->imgs->white = create_and_render(mlx, "img/white.png", '0', param->map);
 				param->ninja->img = create_and_render(mlx, "img/imag.png", 'P', param->map);
 				if (can_go_out(param->map))
 				{
 					mlx_delete_image(mlx, param->imgs->door);
-					param->imgs->door = create_and_render(mlx, "portal.png", 'E', param->map);
+					param->imgs->door = create_and_render(mlx, "img/portal.png", 'E', param->map);
 				}
 			}
 			param->map[param->ninja->y][param->ninja->x] = '0';

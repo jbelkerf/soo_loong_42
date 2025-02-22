@@ -6,22 +6,22 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:22:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/20 17:49:54 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 12:46:40 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-
 
 void	is_the_map_valid(char *file)
 {
 	char	**map;
 
 	map = map_to_str(file);
+	check_non_wanted_symbol(map);
 	check_the_walls(map);
 	ckeck_the_other_symbol(map);
 	is_there_valid_path(map);
+	check_collectible_valid(map);
 	free_map(map);
 }
 
@@ -59,10 +59,10 @@ int	main(int argc, char **argv)
 	mlx = mlx_init(width, height, "jbelkerf", false);
 	if (!mlx)
 		puts_error("mlx_init\n");
-	imgs.white = create_and_render(mlx, "white.png", '0', map);
-	imgs.door = create_and_render(mlx, "porte.png", 'E', map);
-	create_and_render(mlx, "wal.png", '1', map);
-	imgs.collection = create_and_render(mlx, "flame.png", 'C', map);
+	imgs.white = create_and_render(mlx, "img/white.png", '0', map);
+	imgs.door = create_and_render(mlx, "img/porte.png", 'E', map);
+	create_and_render(mlx, "img/wal.png", '1', map);
+	imgs.collection = create_and_render(mlx, "img/flame.png", 'C', map);
 	imag_tex = mlx_load_png("img/imag.png");
 	imag = mlx_texture_to_image(mlx, imag_tex);
 	mlx_resize_image(imag, 50, 50);
