@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:22:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 12:46:40 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 14:32:17 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,39 +38,61 @@ void	set_window_dimension(char *file, int *width, int *height)
 	*height = 50 * i;
 }
 
+void	find_ninja(t_param *param, char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'P')
+			{
+				param->ninja->x = j;
+				param->ninja->y = i;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	get_images(mlx_t *mlx, t_param *param)
+{
+	find_ninja(param, param->map);
+	param->mlx = mlx;
+	param->ninja->move_count = 0;
+	param->imgs->white = create_and_render(mlx, "img/0.png", '0', param->map);
+	param->imgs->door = create_and_render(mlx, "img/E.png", 'E', param->map);
+	param->imgs->col = create_and_render(mlx, "img/C.png", 'C', param->map);
+	param->imgs->wal = create_and_render(mlx, "img/1.png", '1', param->map);
+	param->imgs->ninja = create_and_render(mlx, "img/P.png", 'P', param->map);
+}
+
 int	main(int argc, char **argv)
 {
 	mlx_t			*mlx;
-	t_ninja			ninja;
-	mlx_texture_t	*imag_tex;
-	mlx_image_t		*imag;
 	int				width;
 	int				height;
-	char			**map;
 	t_param			param;
+	t_ninja			ninja;
 	t_images		imgs;
 
-
+	param.ninja = &ninja;
+	param.imgs = &imgs;
 	if (argc != 2)
 		puts_error("too many arguments");
-	map = map_to_str(argv[1]);
+	param.map = map_to_str(argv[1]);
 	is_the_map_valid(argv[1]);
 	set_window_dimension(argv[1], &width, &height);
 	mlx = mlx_init(width, height, "jbelkerf", false);
 	if (!mlx)
 		puts_error("mlx_init\n");
-	imgs.white = create_and_render(mlx, "img/white.png", '0', map);
-	imgs.door = create_and_render(mlx, "img/porte.png", 'E', map);
-	create_and_render(mlx, "img/wal.png", '1', map);
-	imgs.collection = create_and_render(mlx, "img/flame.png", 'C', map);
-	imag_tex = mlx_load_png("img/imag.png");
-	imag = mlx_texture_to_image(mlx, imag_tex);
-	mlx_resize_image(imag, 50, 50);
-	set_ninja(imag, mlx, map, &ninja);
-	param.map = map;
-	param.ninja = &ninja;
-	param.imgs = &imgs;
-	mlx_image_to_window(mlx, imag, ninja.x * 50, ninja.y * 50);
+	get_images(mlx, &param);
 	mlx_key_hook(mlx, ft_hook, (void *)&param);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);

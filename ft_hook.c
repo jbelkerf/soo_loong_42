@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:24:42 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 11:41:36 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 13:24:03 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,12 @@ void	ft_hook(mlx_key_data_t keydata, void *params)
 	int		move_count;
 
 	param = (t_param *)params;
-	mlx = param->ninja->mlx;
+	mlx = param->mlx;
 	move_count = 0;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(mlx);
 	new_x = param->ninja->x;
 	new_y = param->ninja->y;
-
 	if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
 	{
 		if (keydata.key == MLX_KEY_UP)
@@ -82,11 +81,11 @@ void	ft_hook(mlx_key_data_t keydata, void *params)
 			if (param->map[new_y][new_x] == 'C')
 			{
 				param->map[new_y][new_x] = '0';
-				mlx_delete_image(mlx, param->imgs->collection);
+				mlx_delete_image(mlx, param->imgs->col);
 				mlx_delete_image(mlx, param->imgs->white);
-				param->imgs->collection = create_and_render(mlx, "img/flame.png", 'C', param->map);
-				param->imgs->white = create_and_render(mlx, "img/white.png", '0', param->map);
-				param->ninja->img = create_and_render(mlx, "img/imag.png", 'P', param->map);
+				param->imgs->col = create_and_render(mlx, "img/C.png", 'C', param->map);
+				param->imgs->white = create_and_render(mlx, "img/0.png", '0', param->map);
+				param->imgs->ninja = create_and_render(mlx, "img/P.png", 'P', param->map);
 				if (can_go_out(param->map))
 				{
 					mlx_delete_image(mlx, param->imgs->door);
@@ -100,8 +99,8 @@ void	ft_hook(mlx_key_data_t keydata, void *params)
 			param->ninja->move_count++;
 			system("clear");
 		}
-		param->ninja->img->instances[0].x = param->ninja->x * 50;
-		param->ninja->img->instances[0].y = param->ninja->y * 50;
+		param->imgs->ninja->instances[0].x = param->ninja->x * 50;
+		param->imgs->ninja->instances[0].y = param->ninja->y * 50;
 		print_map(param->map);
 		ft_printf("\nmoves are : %i\n",param->ninja->move_count);
 		//print_map(param->map);

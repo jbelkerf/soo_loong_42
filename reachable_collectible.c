@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 12:27:49 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 12:29:39 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 14:38:10 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	reach_collectible(char **map, int *collectible_reached, int x, int y)
 {
 	if (map[y][x] == 'C')
 		*collectible_reached = *collectible_reached + 1;
-	if (map[y][x] == '1' || map[y][x] == 't')
+	if (map[y][x] == '1' || map[y][x] == 't' || map[y][x] == 'E')
 		return ;
 	map[y][x] = 't';
 	reach_collectible(map, collectible_reached, x - 1, y);

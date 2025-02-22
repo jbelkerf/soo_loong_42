@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:35:15 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 12:44:34 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 13:21:31 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ typedef struct map
 
 typedef struct images
 {
-	mlx_image_t	*collection;
+	mlx_image_t	*ninja;
+	mlx_image_t	*col;
 	mlx_image_t	*door;
 	mlx_image_t	*white;
+	mlx_image_t	*wal;
 }	t_images;
 
 typedef struct ninja
 {
-	mlx_t		*mlx;
-	mlx_image_t	*img;
 	int			x;
 	int			y;
 	int			move_count;
@@ -61,6 +61,7 @@ typedef struct hook_param
 	t_ninja		*ninja;
 	char		**map;
 	t_images	*imgs;
+	mlx_t		*mlx;
 }	t_param;
 
 void		check_the_walls(char **map);
