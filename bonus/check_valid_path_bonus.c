@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid_path.c                                 :+:      :+:    :+:   */
+/*   check_valid_path_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:20:49 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/19 13:34:39 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 19:59:42 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	find_player(t_path *path, char **map)
 {
@@ -77,7 +77,7 @@ void	is_there_valid_path(char **map)
 	take_the_path(&path, map, path.player_x, path.player_y);
 	if (!path.exit_reachable)
 	{
-		free_map(map);
+		free_map(&map);
 		puts_error("the player can't get to the exit");
 	}
 }

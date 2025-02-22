@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:22:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 17:52:40 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 20:04:22 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	is_the_map_valid(char *file)
 {
@@ -22,8 +22,10 @@ void	is_the_map_valid(char *file)
 	check_the_walls(map);
 	ckeck_the_other_symbol(map);
 	is_there_valid_path(map);
+	free_map(&map);
+	map = map_to_str(file);
 	check_collectible_valid(map);
-	free_map(map);
+	free_map(&map);
 }
 
 void	set_window_dimension(char *file, int *width, int *height)

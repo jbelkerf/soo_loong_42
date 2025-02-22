@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reachable_collectible.c                            :+:      :+:    :+:   */
+/*   reachable_collectible_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 12:27:49 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 14:38:10 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 19:59:08 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	count_collectible(char **map)
 {
@@ -61,7 +61,7 @@ void	reach_collectible(char **map, int *collectible_reached, int x, int y)
 {
 	if (map[y][x] == 'C')
 		*collectible_reached = *collectible_reached + 1;
-	if (map[y][x] == '1' || map[y][x] == 't' || map[y][x] == 'E')
+	if (map[y][x] == '1' || map[y][x] == 't' || map[y][x] == 'E' )
 		return ;
 	map[y][x] = 't';
 	reach_collectible(map, collectible_reached, x - 1, y);
@@ -82,5 +82,5 @@ void	check_collectible_valid(char **map)
 	get_player_cordination(&player_x, &player_y, map);
 	reach_collectible(map, &collectible_can_be_reach, player_x, player_y);
 	if (collectible_can_be_reach != collectible_number)
-		puts_error("there is collectible can't be reached");
+		free_map_and_error("there is collectible can't be reached", &map);
 }

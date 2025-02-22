@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:24:42 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 17:13:16 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 18:47:31 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,8 @@
 void	win(mlx_t *mlx)
 {
 	mlx_close_window(mlx);
-	system("clear");
 	ft_printf("congrats!\n");
 	exit(0);
-}
-
-void	print_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		ft_printf("%s\n", map[i]);
-		i++;
-	}
 }
 
 void	ft_hook(mlx_key_data_t keydata, void *params)
@@ -56,7 +43,6 @@ void	ft_hook(mlx_key_data_t keydata, void *params)
 		}
 		param->imgs->ninja->instances[0].x = param->ninja->x * 50;
 		param->imgs->ninja->instances[0].y = param->ninja->y * 50;
-		print_map(param->map);
 		ft_printf("\nmoves are : %i\n", param->ninja->move_count);
 	}
 }

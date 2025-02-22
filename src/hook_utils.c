@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 16:46:23 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 17:12:16 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 18:46:39 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	move_the_player(t_param *param, int new_x, int new_y)
 	param->ninja->x = new_x;
 	param->ninja->y = new_y;
 	param->ninja->move_count++;
-	system("clear");
 }
 
 void	eat_col(mlx_t *mlx, t_param *param, int new_x, int new_y)

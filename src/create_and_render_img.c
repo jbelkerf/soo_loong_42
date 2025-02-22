@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 18:52:12 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 17:48:08 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 19:02:25 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ mlx_image_t	*create_render(mlx_t *mlx, char *img_file, int symbol, char **map)
 	mlx_image_t		*img;
 
 	img_tex = mlx_load_png(img_file);
+	if (!img_tex)
+		free_map_and_error("texture can't be loaded", &map);
 	img = mlx_texture_to_image(mlx, img_tex);
 	mlx_delete_texture(img_tex);
 	mlx_resize_image(img, 50, 50);
