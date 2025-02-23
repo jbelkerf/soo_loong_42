@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 16:46:23 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/23 15:41:38 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/23 16:23:21 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,45 +34,46 @@ int	can_go_out(char **map)
 
 void	do_the_click(mlx_key_data_t keydata, int *n_x, int *n_y, t_param *param)
 {
+	mlx_delete_image(param->mlx, param->imgs->ninja);
 	if (keydata.key == MLX_KEY_UP)
 	{
 		*n_y = *n_y - 1;
 		param->img_file = param->img_up;
-		mlx_delete_image(param->mlx, param->imgs->ninja);
-		param->imgs->ninja = create_render(param->mlx, param->img_file, 'P', param->map);
 	}
 	if (keydata.key == MLX_KEY_DOWN)
 	{
 		*n_y = *n_y + 1;
 		param->img_file = param->img_down;
-		mlx_delete_image(param->mlx, param->imgs->ninja);
-		param->imgs->ninja = create_render(param->mlx, param->img_file, 'P', param->map);
 	}
 	if (keydata.key == MLX_KEY_LEFT)
 	{
 		*n_x = *n_x - 1;
 		param->img_file = param->img_left;
-		mlx_delete_image(param->mlx, param->imgs->ninja);
-		param->imgs->ninja = create_render(param->mlx, param->img_file, 'P', param->map);
 	}
 	if (keydata.key == MLX_KEY_RIGHT)
 	{
 		*n_x = *n_x + 1;
 		param->img_file = param->img_right;
-		mlx_delete_image(param->mlx, param->imgs->ninja);
-		param->imgs->ninja = create_render(param->mlx, param->img_file, 'P', param->map);
 	}
+	param->imgs->ninja = create_render(param->mlx, param->img_file, 'P', param->map);
 }
 
 void	move_the_player(t_param *param, int new_x, int new_y)
 {
+	char	*number;
+	char	*string;
+
 	param->map[param->ninja->y][param->ninja->x] = '0';
 	param->map[new_y][new_x] = 'P';
 	param->ninja->x = new_x;
 	param->ninja->y = new_y;
 	param->ninja->move_count++;
 	mlx_delete_image(param->mlx, param->imgs->count);
-	param->imgs->count = mlx_put_string(param->mlx, ft_strjoin("moves :", ft_itoa(param->ninja->move_count)), 0, 0);
+	number = ft_itoa(param->ninja->move_count);
+	string = ft_strjoin("moves :", number);
+	param->imgs->count = mlx_put_string(param->mlx, string, 50, 0);
+	free(number);
+	free(string);
 }
 
 void	eat_col(mlx_t *mlx, t_param *param, int new_x, int new_y)
