@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:22:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/23 17:38:34 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/23 18:01:52 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,23 @@ char	**set_the_enemy(t_param *param)
 
 void print_map(char **map)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (map[i])
 	{
 		ft_printf("%s\n", map[i]);
 		i++;
 	}
+}
+
+void	ft_move_enemy(void *para)
+{
+	t_param	*param;
+
+	param = (t_param *)para;
+	param->imgs->ninja->instances[0].x = param->ninja->x * 50;
+	param->imgs->ninja->instances[0].y = param->ninja->y * 50;
 }
 
 int	main(int argc, char **argv)
@@ -134,6 +145,7 @@ int	main(int argc, char **argv)
 	print_map(param.map);
 	get_images(mlx, &param);
 	mlx_key_hook(mlx, ft_hook, (void *)&param);
+	mlx_loop_hook(mlx, ft_move_enemy, (void *)&param);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (0);
