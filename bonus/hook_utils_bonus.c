@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 16:46:23 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 20:16:46 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/22 21:16:54 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ void	do_the_click(mlx_key_data_t keydata, int *n_x, int *n_y)
 	if (keydata.key == MLX_KEY_LEFT)
 		*n_x = *n_x - 1;
 	if (keydata.key == MLX_KEY_RIGHT)
+	{
 		*n_x = *n_x + 1;
+	}
 }
 
 void	move_the_player(t_param *param, int new_x, int new_y)
