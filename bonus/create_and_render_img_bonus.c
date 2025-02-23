@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 18:52:12 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 19:59:35 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/23 14:44:25 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	render_img(char **map, mlx_t *mlx, mlx_image_t *wall_img, char symbol)
 {
-	int	y;
-	int	x;
+	int		y;
+	int		x;
+	char	c;
 
 	y = 0;
 	while (map[y])
@@ -23,7 +24,8 @@ void	render_img(char **map, mlx_t *mlx, mlx_image_t *wall_img, char symbol)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == symbol || (symbol == '0' && map[y][x] == 'P'))
+			c = map[y][x];
+			if (c == symbol || (symbol == '0' && (c == 'P' || c == 'C')))
 				mlx_image_to_window(mlx, wall_img, x * 50, y * 50);
 			x++;
 		}

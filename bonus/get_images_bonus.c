@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:16:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 20:16:19 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/23 15:19:34 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void	get_images(mlx_t *mlx, t_param *param)
 	find_ninja(param, param->map);
 	param->mlx = mlx;
 	param->ninja->move_count = 0;
+	param->img_left = "textures/P_left.png";
+	param->img_right = "textures/P_right.png";
+	param->img_down = "textures/P_down.png";
+	param->img_up = "textures/P_up.png";
+	param->img_file = param->img_down;
 	img = create_render(mlx, "textures/0.png", '0', param->map);
 	param->imgs->white = img;
 	img = create_render(mlx, "textures/E.png", 'E', param->map);
@@ -50,6 +55,6 @@ void	get_images(mlx_t *mlx, t_param *param)
 	param->imgs->col = img;
 	img = create_render(mlx, "textures/1.png", '1', param->map);
 	param->imgs->wal = img;
-	img = create_render(mlx, "textures/P.png", 'P', param->map);
+	img = create_render(mlx, "textures/P_down.png", 'P', param->map);
 	param->imgs->ninja = img;
 }

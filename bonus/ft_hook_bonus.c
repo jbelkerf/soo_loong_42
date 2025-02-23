@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:24:42 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 21:23:29 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/23 13:00:18 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_hook(mlx_key_data_t keydata, void *params)
 	new_y = param->ninja->y;
 	if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
 	{
-		do_the_click(keydata, &new_x, &new_y);
+		do_the_click(keydata, &new_x, &new_y, param);
 		if (param->map[new_y][new_x] == 'E' && can_go_out(param->map))
 			win(param->mlx);
 		if (param->map[new_y][new_x] != '1' && param->map[new_y][new_x] != 'E')

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:35:15 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 18:52:15 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/23 15:14:42 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <stdlib.h>
 # include <stdbool.h>
@@ -57,12 +57,17 @@ typedef struct path
 
 typedef struct hook_param
 {
-	t_ninja		*ninja;
-	char		**map;
-	t_images	*imgs;
 	mlx_t		*mlx;
+	t_ninja		*ninja;
+	t_images	*imgs;
 	int			mlx_width;
 	int			mlx_height;
+	char		**map;
+	char		*img_file;
+	char		*img_right;
+	char		*img_up;
+	char		*img_down;
+	char		*img_left;
 }	t_param;
 
 void		check_the_walls(char **map);
@@ -76,7 +81,7 @@ void		check_collectible_valid(char **map);
 mlx_image_t	*create_render(mlx_t *mlx, char *img_file, int symbol, char **map);
 void		free_map_and_error(char *error, char ***map);
 void		check_non_wanted_symbol(char **map);
-void		do_the_click(mlx_key_data_t keydata, int *n_x, int *n_y);
+void		do_the_click(mlx_key_data_t keydata, int *n_x, int *n_y, t_param *param);
 void		move_the_player(t_param *param, int new_x, int new_y);
 void		eat_col(mlx_t *mlx, t_param *param, int new_x, int new_y);
 int			can_go_out(char **map);
