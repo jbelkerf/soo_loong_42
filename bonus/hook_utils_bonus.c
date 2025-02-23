@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 16:46:23 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/23 16:23:21 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/23 17:42:44 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	eat_col(mlx_t *mlx, t_param *param, int new_x, int new_y)
 	param->imgs->white = create_render(mlx, "textures/0.png", '0', param->map);
 	param->imgs->col = create_render(mlx, "textures/C.png", 'C', param->map);
 	param->imgs->ninja = create_render(mlx, param->img_file, 'P', param->map);
+	param->imgs->enemy = create_render(mlx, "textures/I.png", 'I', param->map);
 	if (can_go_out(param->map))
 	{
 		mlx_delete_image(mlx, param->imgs->door);

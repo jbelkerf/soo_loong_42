@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:16:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/23 15:19:34 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/23 16:43:28 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,6 @@ void	get_images(mlx_t *mlx, t_param *param)
 	param->imgs->wal = img;
 	img = create_render(mlx, "textures/P_down.png", 'P', param->map);
 	param->imgs->ninja = img;
+	img = create_render(mlx, "textures/I.png", 'I', param->map);
+	param->imgs->enemy = img;
 }
