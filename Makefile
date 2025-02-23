@@ -6,7 +6,7 @@
 #    By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 17:21:12 by jbelkerf          #+#    #+#              #
-#    Updated: 2025/02/22 20:20:03 by jbelkerf         ###   ########.fr        #
+#    Updated: 2025/02/23 15:33:17 by jbelkerf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC_BONUS = bonus/check_file_format_bonus.c bonus/check_non_wanted_symbols_bonus
 bonus/check_symbols_bonus.c bonus/check_valid_path_bonus.c bonus/check_walls_bonus.c \
 bonus/create_and_render_img_bonus.c bonus/ft_hook_bonus.c bonus/get_images_bonus.c \
 bonus/hook_utils_bonus.c bonus/main_bonus.c bonus/map_to_str_bonus.c \
-bonus/reachable_collectible_bonus.c gnl/get_next_line.c gnl/get_next_line_utils.c
+bonus/reachable_collectible_bonus.c gnl/get_next_line.c gnl/get_next_line_utils.c bonus/itoa_bonus.c
  
 
 all: $(NAME)

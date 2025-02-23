@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:24:42 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/23 13:00:18 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/23 15:46:12 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_hook(mlx_key_data_t keydata, void *params)
 		}
 		param->imgs->ninja->instances[0].x = param->ninja->x * 50;
 		param->imgs->ninja->instances[0].y = param->ninja->y * 50;
-		ft_printf("\nmoves are : %i\n", param->ninja->move_count);
+		mlx_put_string(param->mlx, ft_itoa(param->ninja->move_count), 0 ,0);
+		ft_printf("\033[2J\033[Hmoves are : %i\n", param->ninja->move_count);
 	}
 }

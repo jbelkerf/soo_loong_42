@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 16:46:23 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/23 15:16:59 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/23 15:41:38 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	move_the_player(t_param *param, int new_x, int new_y)
 	param->ninja->x = new_x;
 	param->ninja->y = new_y;
 	param->ninja->move_count++;
+	mlx_delete_image(param->mlx, param->imgs->count);
+	param->imgs->count = mlx_put_string(param->mlx, ft_strjoin("moves :", ft_itoa(param->ninja->move_count)), 0, 0);
 }
 
 void	eat_col(mlx_t *mlx, t_param *param, int new_x, int new_y)

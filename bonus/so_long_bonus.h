@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:35:15 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/23 15:14:42 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/23 15:36:11 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct images
 	mlx_image_t	*door;
 	mlx_image_t	*white;
 	mlx_image_t	*wal;
+	mlx_image_t	*count;
 }	t_images;
 
 typedef struct ninja
@@ -87,5 +88,6 @@ void		eat_col(mlx_t *mlx, t_param *param, int new_x, int new_y);
 int			can_go_out(char **map);
 void		get_images(mlx_t *mlx, t_param *param);
 void		check_the_file(char *file);
+char		*ft_itoa(int nbr);
 
 #endif
