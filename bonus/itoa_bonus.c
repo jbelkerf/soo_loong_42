@@ -6,17 +6,44 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:32:03 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/23 15:34:11 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/24 11:49:57 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-char    *strr(char *str)
+int	check_is_negative(long *n)
 {
-	int        i;
-	int        len;
-	char    c;
+	if (*n < 0)
+	{
+		*n = *n * -1;
+		return (1);
+	}
+	return (0);
+}
+
+int	count_the_len(long n, int is_negative)
+{
+	int	len;
+
+	len = 0;
+	while (n > 9)
+	{
+		n = n / 10;
+		len++;
+	}
+	if (is_negative)
+		len = len + 3;
+	else
+		len = len + 2;
+	return (len);
+}
+
+char	*str_rev(char *str)
+{
+	int		i;
+	int		len;
+	char	c;
 
 	i = 0;
 	len = ft_strlen(str);
@@ -31,50 +58,39 @@ char    *strr(char *str)
 	return (str);
 }
 
-char *ft_itoa(int nbr)
+void	set_the_string(int is_negative, long n, char **res)
 {
-	char *res;
-	long int n = nbr;
-	int f = 0;
-	int i = 0;
+	int	i;
 
-	if (n < 0)
-	{
-		f = 1;
-		n = n * (-1);
-	}
-	while (n  > 9)
-	{
-		n = n / 10;
-		i++;
-	}
-	if (f)
-		i = i + 3;
-	else
-		i = i + 2;
-	res = (char *)malloc((i) * sizeof(char));
 	i = 0;
-	if (f)
-	{
-		n = nbr;
-		n = n * (-1);
-	}
-	else
-		n = nbr;
 	while (n > 9)
 	{
-		res[i] = (n % 10) + '0';
+		(*res)[i] = (n % 10) + '0';
 		i++;
 		n = n / 10;
 	}
-	res[i] = n + '0';
+	(*res)[i] = n + '0';
 	i++;
-	if (f)
+	if (is_negative)
 	{
-		res[i] = '-';
+		(*res)[i] = '-';
 		i++;
 	}
-	res[i] = '\0';
-	res = strr(res);
+	(*res)[i] = '\0';
+	*res = str_rev(*res);
+}
+
+char	*itoa(int nbr)
+{
+	char	*res;
+	long	n;
+	int		is_negtive;
+	int		len;
+
+	n = nbr;
+	is_negtive = check_is_negative(&n);
+	len = count_the_len(n, is_negtive);
+	res = malloc(len * sizeof(char));
+	set_the_string(is_negtive, n, &res);
 	return (res);
 }
