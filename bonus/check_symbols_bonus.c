@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:45:03 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 19:59:46 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/25 16:43:46 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	puts_error(char *str)
 {
-	ft_printf("%s\n", str);
+	ft_printf("Error\n%s\n", str);
 	exit(1);
 }
 

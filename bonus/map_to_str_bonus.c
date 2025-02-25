@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:44:57 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 19:59:17 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/25 16:49:28 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	count_line(char *file)
 		free(str);
 	}
 	close(fd);
+	if (line_count == 0)
+		puts_error("emptys shit");
 	return (line_count);
 }
 
