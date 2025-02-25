@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 16:46:23 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/22 20:30:34 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/25 13:42:59 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	can_go_out(char **map)
 	return (1);
 }
 
-void	do_the_click(mlx_key_data_t keydata, int *n_x, int *n_y)
+void	do_click(mlx_key_data_t keydata, int *n_x, int *n_y)
 {
 	if (keydata.key == MLX_KEY_UP)
 		*n_y = *n_y - 1;

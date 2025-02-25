@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:35:15 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/25 13:34:04 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/25 13:42:59 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void		check_collectible_valid(char **map);
 mlx_image_t	*create_render(mlx_t *mlx, char *img_file, int symbol, char **map);
 void		free_map_and_error(char *error, char ***map);
 void		check_non_wanted_symbol(char **map);
-void		do_the_click(mlx_key_data_t keydata, int *n_x, int *n_y, t_param *param);
+void		do_click(mlx_key_data_t keydata, int *n_x, int *n_y, t_param *pa);
 void		move_the_player(t_param *param, int new_x, int new_y);
 void		eat_col(mlx_t *mlx, t_param *param, int new_x, int new_y);
 int			can_go_out(char **map);
@@ -98,7 +98,6 @@ void		move_enemy_up(t_param *pa, int x, int y);
 void		move_enemy_right(t_param *pa, int x, int y);
 void		move_enemy_down(t_param *pa, int x, int y);
 void		move_enemy_left(t_param *pa, int x, int y);
-void		move_the_enemy(t_param *pa, int counter);
 int			set_the_move_derection(int derction);
 void		check_lose(t_param *pa, int where_to_move, int x, int y);
 

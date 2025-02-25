@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 16:46:23 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/23 17:42:44 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/25 13:42:59 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,30 @@ int	can_go_out(char **map)
 	return (1);
 }
 
-void	do_the_click(mlx_key_data_t keydata, int *n_x, int *n_y, t_param *param)
+void	do_click(mlx_key_data_t keydata, int *n_x, int *n_y, t_param *pa)
 {
-	mlx_delete_image(param->mlx, param->imgs->ninja);
+	mlx_delete_image(pa->mlx, pa->imgs->ninja);
 	if (keydata.key == MLX_KEY_UP)
 	{
 		*n_y = *n_y - 1;
-		param->img_file = param->img_up;
+		pa->img_file = pa->img_up;
 	}
 	if (keydata.key == MLX_KEY_DOWN)
 	{
 		*n_y = *n_y + 1;
-		param->img_file = param->img_down;
+		pa->img_file = pa->img_down;
 	}
 	if (keydata.key == MLX_KEY_LEFT)
 	{
 		*n_x = *n_x - 1;
-		param->img_file = param->img_left;
+		pa->img_file = pa->img_left;
 	}
 	if (keydata.key == MLX_KEY_RIGHT)
 	{
 		*n_x = *n_x + 1;
-		param->img_file = param->img_right;
+		pa->img_file = pa->img_right;
 	}
-	param->imgs->ninja = create_render(param->mlx, param->img_file, 'P', param->map);
+	pa->imgs->ninja = create_render(pa->mlx, pa->img_file, 'P', pa->map);
 }
 
 void	move_the_player(t_param *param, int new_x, int new_y)

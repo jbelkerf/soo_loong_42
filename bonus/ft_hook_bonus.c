@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:24:42 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/23 17:46:07 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/25 13:44:46 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	win(mlx_t *mlx)
 	exit(0);
 }
 
-void lose(mlx_t *mlx)
+void	lose(mlx_t *mlx)
 {
 	mlx_close_window(mlx);
 	ft_printf("you lose!\n");
@@ -39,7 +39,7 @@ void	ft_hook(mlx_key_data_t keydata, void *params)
 	new_y = param->ninja->y;
 	if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
 	{
-		do_the_click(keydata, &new_x, &new_y, param);
+		do_click(keydata, &new_x, &new_y, param);
 		if (param->map[new_y][new_x] == 'E' && can_go_out(param->map))
 			win(param->mlx);
 		if (param->map[new_y][new_x] == 'I')
