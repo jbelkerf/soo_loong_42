@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:22:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/24 15:27:38 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:42:31 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	main(int argc, char **argv)
 		puts_error("mlx_init\n");
 	param.map = set_the_enemy(&param);
 	print_map(param.map);
+	ft_printf("khrej\n");
 	get_images(mlx, &param);
 	mlx_key_hook(mlx, ft_hook, (void *)&param);
 	mlx_loop_hook(mlx, ft_move_enemy, (void *)&param);

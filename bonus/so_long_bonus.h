@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:35:15 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/25 13:42:59 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:20:58 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,7 @@ void		move_enemy_down(t_param *pa, int x, int y);
 void		move_enemy_left(t_param *pa, int x, int y);
 int			set_the_move_derection(int derction);
 void		check_lose(t_param *pa, int where_to_move, int x, int y);
+
+void print_map(char **map);
 
 #endif
