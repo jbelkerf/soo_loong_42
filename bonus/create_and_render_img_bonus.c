@@ -6,13 +6,13 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 18:52:12 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/23 17:40:13 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:48:35 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	render_img(char **map, mlx_t *mlx, mlx_image_t *wall_img, char symbol)
+void	render_img(char **map, mlx_t *mlx, mlx_image_t *wall_img, char sym)
 {
 	int		y;
 	int		x;
@@ -25,7 +25,7 @@ void	render_img(char **map, mlx_t *mlx, mlx_image_t *wall_img, char symbol)
 		while (map[y][x])
 		{
 			c = map[y][x];
-			if (c == symbol || (symbol == '0' && (c == 'P' || c == 'C' || c == 'I')))
+			if (c == sym || (sym == '0' && (c == 'P' || c == 'C' || c == 'I')))
 				mlx_image_to_window(mlx, wall_img, x * 50, y * 50);
 			x++;
 		}

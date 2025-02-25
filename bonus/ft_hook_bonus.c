@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:24:42 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/25 13:44:46 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:52:26 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ void	lose(mlx_t *mlx)
 	mlx_close_window(mlx);
 	ft_printf("you lose!\n");
 	exit(1);
+}
+
+void	move_and_count(t_param *param)
+{
+	param->imgs->ninja->instances[0].x = param->ninja->x * 50;
+	param->imgs->ninja->instances[0].y = param->ninja->y * 50;
+	ft_printf("\033[2J\033[Hmoves are : %i\n", param->ninja->move_count);
 }
 
 void	ft_hook(mlx_key_data_t keydata, void *params)
@@ -50,8 +57,6 @@ void	ft_hook(mlx_key_data_t keydata, void *params)
 				eat_col(param->mlx, param, new_x, new_y);
 			move_the_player(param, new_x, new_y);
 		}
-		param->imgs->ninja->instances[0].x = param->ninja->x * 50;
-		param->imgs->ninja->instances[0].y = param->ninja->y * 50;
-		ft_printf("\033[2J\033[Hmoves are : %i\n", param->ninja->move_count);
+		move_and_count(param);
 	}
 }
