@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:05:46 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/24 18:57:03 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/25 13:37:24 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	find_enemy(char **map, int *x, int *y)
 		i++;
 	}
 }
-void check_lose(t_param *pa, int where_to_move, int x, int y)
+
+void	check_lose(t_param *pa, int where_to_move, int x, int y)
 {
 	if (where_to_move == 0 && pa->map[y - 1][x] == 'P')
 		lose(pa->mlx);
@@ -59,52 +60,41 @@ void check_lose(t_param *pa, int where_to_move, int x, int y)
 		lose(pa->mlx);
 }
 
-void    ft_move_enemy(void *param)
+int	movee(t_param *pa, int where_to_move, int x, int y)
+{
+	if (where_to_move == 0 && pa->map[y - 1][x] == '0')
+		move_enemy_up(pa, x, y);
+	else if (where_to_move == 2 && pa->map[y + 1][x] == '0')
+		move_enemy_down(pa, x, y);
+	else if (where_to_move == 1 && pa->map[y][x + 1] == '0')
+		move_enemy_right(pa, x, y);
+	else if (where_to_move == 3 && pa->map[y][x - 1] == '0')
+		move_enemy_left(pa, x, y);
+	else
+		return (set_the_move_derection(where_to_move));
+	return (where_to_move);
+}
+
+void	ft_move_enemy(void *param)
 {
 	t_param			*pa;
 	int				x;
 	int				y;
-	static int		counter;
 	static int		where_to_move;
 	static int		random;
 
 	pa = (t_param *)param;
 	find_enemy(pa->map, &x, &y);
-	if ((counter % 17) == 0)
+	if ((pa->counter % 17) == 0)
 	{
-		if (random == pa->mlx_width / 50 - 2)
+		if (random == pa->mlx_width / 50 - 3)
 		{
 			random = 0;
-			where_to_move = (where_to_move + counter ) % 3;
+			where_to_move = (where_to_move + pa->counter) % 3;
 		}
 		check_lose(pa, where_to_move, x, y);
-		if (where_to_move == 0 && pa->map[y - 1][x] == '0')
-		{
-			pa->map[y][x] = '0';
-			pa->map[y - 1][x] = 'I';
-			pa->imgs->enemy->instances[0].y = (y - 1) * 50;
-		}
-		else if (where_to_move == 2 && pa->map[y + 1][x] == '0')
-		{
-			pa->map[y][x] = '0';
-			pa->map[y + 1][x] = 'I';
-			pa->imgs->enemy->instances[0].y = (y + 1) * 50;
-		}
-		else if (where_to_move == 1 && pa->map[y][x + 1] == '0')
-		{
-			pa->map[y][x] = '0';
-			pa->map[y][x + 1] = 'I';
-			pa->imgs->enemy->instances[0].x = (x + 1) * 50;
-		}
-		else if (where_to_move == 3 && pa->map[y][x - 1] == '0')
-		{
-			pa->map[y][x] = '0';
-			pa->map[y][x - 1] = 'I';
-			pa->imgs->enemy->instances[0].x = (x - 1) * 50;
-		}
-		else
-			where_to_move = set_the_move_derection(where_to_move);
+		where_to_move = movee(pa, where_to_move, x, y);
 		random++;
 	}
-	counter++;
+	pa->counter++;
 }

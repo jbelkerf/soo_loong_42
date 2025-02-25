@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 11:56:28 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/24 11:56:47 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/25 13:36:03 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ char	**set_the_enemy(t_param *param)
 	int	i;
 
 	i = 1;
+	param->counter = 0;
 	ft_find_ninja(param->map, &x, &y);
 	while (param->map[y][x - i] == '0')
 		i++;

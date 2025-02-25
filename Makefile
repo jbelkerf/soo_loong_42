@@ -6,7 +6,7 @@
 #    By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 17:21:12 by jbelkerf          #+#    #+#              #
-#    Updated: 2025/02/24 15:10:17 by jbelkerf         ###   ########.fr        #
+#    Updated: 2025/02/25 12:39:31 by jbelkerf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ bonus/check_symbols_bonus.c bonus/check_valid_path_bonus.c bonus/check_walls_bon
 bonus/create_and_render_img_bonus.c bonus/ft_hook_bonus.c bonus/get_images_bonus.c \
 bonus/hook_utils_bonus.c bonus/main_bonus.c bonus/map_to_str_bonus.c \
 bonus/reachable_collectible_bonus.c gnl/get_next_line.c gnl/get_next_line_utils.c \
-bonus/itoa_bonus.c bonus/set_the_enemy_bonus.c bonus/move_the_enemy_bonus.c
+bonus/itoa_bonus.c bonus/set_the_enemy_bonus.c bonus/move_the_enemy_bonus.c \
+bonus/move_enemy_utils.c
  
 
 all: $(NAME)

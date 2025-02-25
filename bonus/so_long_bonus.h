@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:35:15 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/24 18:22:32 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/25 13:34:04 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct hook_param
 	t_images	*imgs;
 	int			mlx_width;
 	int			mlx_height;
+	int			counter;
 	char		**map;
 	char		*img_file;
 	char		*img_right;
@@ -93,5 +94,12 @@ char		*itoa(int nbr);
 char		**set_the_enemy(t_param *param);
 void		ft_move_enemy(void *param);
 void		lose(mlx_t *mlx);
+void		move_enemy_up(t_param *pa, int x, int y);
+void		move_enemy_right(t_param *pa, int x, int y);
+void		move_enemy_down(t_param *pa, int x, int y);
+void		move_enemy_left(t_param *pa, int x, int y);
+void		move_the_enemy(t_param *pa, int counter);
+int			set_the_move_derection(int derction);
+void		check_lose(t_param *pa, int where_to_move, int x, int y);
 
 #endif
