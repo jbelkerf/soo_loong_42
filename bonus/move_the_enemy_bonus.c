@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:05:46 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/25 13:37:24 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/25 16:35:06 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,12 @@ void	ft_move_enemy(void *param)
 	static int		random;
 
 	pa = (t_param *)param;
+	if (!is_there_enemy(pa->map))
+		return ;
 	find_enemy(pa->map, &x, &y);
 	if ((pa->counter % 17) == 0)
 	{
-		if (random == pa->mlx_width / 50 - 3)
+		if (random == pa->mlx_width / 50 - 2)
 		{
 			random = 0;
 			where_to_move = (where_to_move + pa->counter) % 3;
