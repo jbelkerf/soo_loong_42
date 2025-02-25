@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:35:15 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/24 15:09:48 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/24 18:22:32 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ void		check_the_file(char *file);
 char		*itoa(int nbr);
 char		**set_the_enemy(t_param *param);
 void		ft_move_enemy(void *param);
+void		lose(mlx_t *mlx);
 
 #endif
