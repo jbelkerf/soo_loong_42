@@ -40,7 +40,7 @@ all: .men
 
 $(NAME): .men
 
-.men: src/so_long.h $(MLX) $(LIBFT) $(SRC)
+.men: src/so_long.h  $(LIBFT) $(SRC)
 	$(CC) $(CFLAGS) $(SRC) $(LFLAGS) -o $(NAME)
 	@touch .men
 	@rm -f .bonus
