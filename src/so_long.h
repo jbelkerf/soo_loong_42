@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/19 13:35:15 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/25 13:42:59 by jbelkerf         ###   ########.fr       */
+/*   Created: 2025/02/26 16:32:43 by jbelkerf          #+#    #+#             */
+/*   Updated: 2025/02/26 16:40:14 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 # define SO_LONG_H
 
 # include <stdlib.h>
-# include <stdbool.h>
 # include <fcntl.h>
-# include "MLX42.h"
+# include "/Users/jbelkerf/MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
 # include "../gnl/get_next_line.h"
 

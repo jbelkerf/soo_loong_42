@@ -6,7 +6,7 @@
 #    By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 17:21:12 by jbelkerf          #+#    #+#              #
-#    Updated: 2025/02/25 12:39:31 by jbelkerf         ###   ########.fr        #
+#    Updated: 2025/02/26 17:11:11 by jbelkerf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,10 @@ NAME = so_long
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror  -I MLX42/include/MLX42 -I libft/include 
-LFLAGS = -L MLX42/build -L /Users/jbelkerf/.brew/opt/glfw/lib -L libft -l mlx42 -l glfw -l ft \
+LFLAGS = -L ~/MLX42/build -L /Users/jbelkerf/.brew/opt/glfw/lib -L libft -l mlx42 -l glfw -l ft \
 		 -framework Cocoa -framework OpenGL -framework IOKit
 
-MLX = MLX42/build/libmlx42.a
+MLX = ~/MLX42/build/libmlx42.a
 
 LIBFT = libft/libft.a 
 
@@ -35,27 +35,35 @@ bonus/itoa_bonus.c bonus/set_the_enemy_bonus.c bonus/move_the_enemy_bonus.c \
 bonus/move_enemy_utils.c
  
 
-all: $(NAME)
+all: .men
 
-$(NAME): $(MLX) $(LIBFT) $(SRC)
+$(NAME): .men
+
+.men: src/so_long.h $(MLX) $(LIBFT) $(SRC)
 	$(CC) $(CFLAGS) $(SRC) $(LFLAGS) -o $(NAME)
+	touch .men
+	rm -f .bonus
 
-bonus: $(MLX) $(LIBFT) $(SRC_BONUS) 
+bonus: .bonus
+
+.bonus: bonus/so_long_bonus.h $(MLX) $(LIBFT) $(SRC_BONUS) 
 	$(CC) $(CFLAGS) $(SRC_BONUS) $(LFLAGS) -o $(NAME)
+	touch .bonus
+	rm -f .men
 
-$(MLX):
-	make -C MLX42/build
+
 
 $(LIBFT):
 	make -C libft
 
 clean:
 	make -C libft clean
-	make -C MLX42/build clean
 
 fclean: clean
 	rm -f $(NAME)
 	make -C libft fclean
+	rm -f .bonus
+	rm -f .men
 
 re: fclean all
 

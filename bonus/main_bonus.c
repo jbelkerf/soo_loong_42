@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:22:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/25 16:45:24 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/26 17:56:46 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,17 @@ void	set_window_dimension(char *file, int *width, int *height)
 	while (map[i])
 		i++;
 	*height = 50 * i;
+	free_map(&map);
 }
 
-void	print_map(char **map)
+
+
+
+void hh()
 {
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		ft_printf("%s\n", map[i]);
-		i++;
-	}
+	system("leaks so_long");
 }
+
 
 int	main(int argc, char **argv)
 {
@@ -60,6 +58,7 @@ int	main(int argc, char **argv)
 	t_ninja			ninja;
 	t_images		imgs;
 
+	atexit(hh);
 	param.ninja = &ninja;
 	param.imgs = &imgs;
 	if (argc != 2)
@@ -71,7 +70,6 @@ int	main(int argc, char **argv)
 	if (!mlx)
 		puts_error("mlx_init\n");
 	param.map = set_the_enemy(&param);
-	print_map(param.map);
 	get_images(mlx, &param);
 	mlx_key_hook(mlx, ft_hook, (void *)&param);
 	mlx_loop_hook(mlx, ft_move_enemy, (void *)&param);

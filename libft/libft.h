@@ -6,14 +6,13 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:01:24 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/02 15:08:49 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/26 17:13:07 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stddef.h>
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
@@ -37,10 +36,10 @@ int		hexa_u(unsigned long int pp, int c);
 int		check_flag(char c, va_list ap);
 void	ft_lstclear(t_stack **lst, void (*del)(void *));
 void	ft_lstdelone(t_stack *lst, void (*del)(void *));
-void	ft_lstadd_back(t_stack **lst, t_stack *new);
+void	ft_lstadd_back(t_stack **lst, t_stack *new_c);
 t_stack	*ft_lstlast(t_stack *lst);
 int		ft_lstsize(t_stack *lst);
-void	ft_lstadd_front(t_stack **lst, t_stack *new);
+void	ft_lstadd_front(t_stack **lst, t_stack *new_c);
 t_stack	*ft_lstnew(int value);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
@@ -56,7 +55,7 @@ void	ft_putchar_fd(char c, int fd);
 char	*ft_strdup(const char *s);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strnstr(const char *big, const char *lil, size_t len);
-size_t	ft_strlcat(char *dst, const char *src, size_t size);
+int		ft_strlcat(char *dst, const char *src, int size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);

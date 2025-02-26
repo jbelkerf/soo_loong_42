@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 13:35:15 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/25 16:25:50 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/26 17:45:18 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 # define SO_LONG_BONUS_H
 
 # include <stdlib.h>
-# include <stdbool.h>
 # include <fcntl.h>
-# include "MLX42.h"
+# include "/Users/jbelkerf/MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
 # include "../gnl/get_next_line.h"
 
@@ -93,7 +92,7 @@ void		check_the_file(char *file);
 char		*itoa(int nbr);
 char		**set_the_enemy(t_param *param);
 void		ft_move_enemy(void *param);
-void		lose(mlx_t *mlx);
+void		lose(mlx_t *mlx, t_param *pa);
 void		move_enemy_up(t_param *pa, int x, int y);
 void		move_enemy_right(t_param *pa, int x, int y);
 void		move_enemy_down(t_param *pa, int x, int y);
@@ -101,7 +100,5 @@ void		move_enemy_left(t_param *pa, int x, int y);
 int			set_the_move_derection(int derction);
 void		check_lose(t_param *pa, int where_to_move, int x, int y);
 int			is_there_enemy(char **map);
-
-void	print_map(char **map);
 
 #endif

@@ -6,24 +6,32 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:24:42 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/25 15:52:26 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/26 17:58:53 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	win(mlx_t *mlx)
+void	win(mlx_t *mlx, t_param *pa)
 {
+	free_map(&(pa->map));
 	mlx_close_window(mlx);
-	ft_printf("congrats!\n");
+	ft_printf("\033[2J\033[Hcongrats!\n");
 	exit(0);
 }
 
-void	lose(mlx_t *mlx)
+void	lose(mlx_t *mlx, t_param *pa)
 {
+	free_map(&(pa->map));
 	mlx_close_window(mlx);
-	ft_printf("you lose!\n");
+	ft_printf("\033[2J\033[Hyou lose!\n");
 	exit(1);
+}
+
+void	exit_by_escape(t_param *pa)
+{
+	free_map(&(pa->map));
+	mlx_close_window(pa->mlx);
 }
 
 void	move_and_count(t_param *param)
@@ -41,16 +49,16 @@ void	ft_hook(mlx_key_data_t keydata, void *params)
 
 	param = (t_param *)params;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		mlx_close_window(param->mlx);
+		exit_by_escape(param);
 	new_x = param->ninja->x;
 	new_y = param->ninja->y;
 	if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
 	{
 		do_click(keydata, &new_x, &new_y, param);
 		if (param->map[new_y][new_x] == 'E' && can_go_out(param->map))
-			win(param->mlx);
+			win(param->mlx, param);
 		if (param->map[new_y][new_x] == 'I')
-			lose(param->mlx);
+			lose(param->mlx, param);
 		if (param->map[new_y][new_x] != '1' && param->map[new_y][new_x] != 'E')
 		{
 			if (param->map[new_y][new_x] == 'C')

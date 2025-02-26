@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:05:46 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/25 16:35:06 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/26 17:45:46 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ void	find_enemy(char **map, int *x, int *y)
 void	check_lose(t_param *pa, int where_to_move, int x, int y)
 {
 	if (where_to_move == 0 && pa->map[y - 1][x] == 'P')
-		lose(pa->mlx);
+		lose(pa->mlx, pa);
 	if (where_to_move == 2 && pa->map[y + 1][x] == 'P')
-		lose(pa->mlx);
+		lose(pa->mlx, pa);
 	if (where_to_move == 1 && pa->map[y][x + 1] == 'P')
-		lose(pa->mlx);
+		lose(pa->mlx, pa);
 	if (where_to_move == 3 && pa->map[y][x - 1] == 'P')
-		lose(pa->mlx);
+		lose(pa->mlx, pa);
 }
 
 int	movee(t_param *pa, int where_to_move, int x, int y)
