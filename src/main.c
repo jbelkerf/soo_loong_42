@@ -6,19 +6,11 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:22:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/26 17:53:01 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/26 18:15:21 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-
-
-void hh()
-{
-	system("leaks so_long");
-}
-
 
 void	is_the_map_valid(char *file)
 {
@@ -56,11 +48,6 @@ int	main(int argc, char **argv)
 	t_param			param;
 	t_ninja			ninja;
 	t_images		imgs;
-
-
-	
-	atexit(hh);
-
 
 	param.ninja = &ninja;
 	param.imgs = &imgs;
