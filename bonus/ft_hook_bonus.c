@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:24:42 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/26 17:58:53 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/26 18:50:12 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	exit_by_escape(t_param *pa)
 {
 	free_map(&(pa->map));
 	mlx_close_window(pa->mlx);
+	exit(0);
 }
 
 void	move_and_count(t_param *param)

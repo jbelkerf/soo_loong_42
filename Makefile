@@ -6,7 +6,7 @@
 #    By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 17:21:12 by jbelkerf          #+#    #+#              #
-#    Updated: 2025/02/26 17:11:11 by jbelkerf         ###   ########.fr        #
+#    Updated: 2025/02/26 18:33:54 by jbelkerf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,15 +41,15 @@ $(NAME): .men
 
 .men: src/so_long.h $(MLX) $(LIBFT) $(SRC)
 	$(CC) $(CFLAGS) $(SRC) $(LFLAGS) -o $(NAME)
-	touch .men
-	rm -f .bonus
+	@touch .men
+	@rm -f .bonus
 
 bonus: .bonus
 
 .bonus: bonus/so_long_bonus.h $(MLX) $(LIBFT) $(SRC_BONUS) 
 	$(CC) $(CFLAGS) $(SRC_BONUS) $(LFLAGS) -o $(NAME)
-	touch .bonus
-	rm -f .men
+	@touch .bonus
+	@rm -f .men
 
 
 
@@ -62,8 +62,8 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	make -C libft fclean
-	rm -f .bonus
-	rm -f .men
+	@rm -f .bonus
+	@rm -f .men
 
 re: fclean all
 
