@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <fcntl.h>
-# include "/Users/jbelkerf/MLX42/include/MLX42/MLX42.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
 # include "../gnl/get_next_line.h"
 
