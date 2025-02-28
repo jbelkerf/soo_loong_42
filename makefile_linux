@@ -14,10 +14,11 @@ NAME = so_long
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror  -I MLX42/include/MLX42 -I libft/include 
-LFLAGS = -L ~/MLX42/build -L /Users/jbelkerf/.brew/opt/glfw/lib -L libft -l mlx42 -l glfw -l ft \
-		 -framework Cocoa -framework OpenGL -framework IOKit
+LFLAGS = MLX42/build/libmlx42.a $(LIBFT) -Iinclude -ldl -lglfw -pthread -lm
 
-MLX = ~/MLX42/build/libmlx42.a
+
+
+MLX = MLX42/build/libmlx42.a
 
 LIBFT = libft/libft.a 
 
@@ -39,7 +40,7 @@ all: .men
 
 $(NAME): .men
 
-.men: src/so_long.h $(MLX) $(LIBFT) $(SRC)
+.men: src/so_long.h  $(LIBFT) $(SRC)
 	$(CC) $(CFLAGS) $(SRC) $(LFLAGS) -o $(NAME)
 	@touch .men
 	@rm -f .bonus
