@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:05:46 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/26 17:45:46 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/28 15:41:47 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	ft_move_enemy(void *param)
 	if (!is_there_enemy(pa->map))
 		return ;
 	find_enemy(pa->map, &x, &y);
+	rotate_the_collectibles(pa);
 	if ((pa->counter % 17) == 0)
 	{
 		if (random == pa->mlx_width / 50 - 2)

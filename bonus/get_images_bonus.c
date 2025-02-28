@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:16:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/23 16:43:28 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/28 15:30:48 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	get_images(mlx_t *mlx, t_param *param)
 	param->img_down = "textures/P_down.png";
 	param->img_up = "textures/P_up.png";
 	param->img_file = param->img_down;
+	param->coll_file = "textures/C.png";
 	img = create_render(mlx, "textures/0.png", '0', param->map);
 	param->imgs->white = img;
 	img = create_render(mlx, "textures/E.png", 'E', param->map);
