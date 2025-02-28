@@ -6,7 +6,7 @@
 /*   By: jbelkerf <jbelkerf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:22:58 by jbelkerf          #+#    #+#             */
-/*   Updated: 2025/02/26 19:00:48 by jbelkerf         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:06:54 by jbelkerf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ void	set_window_dimension(char *file, int *width, int *height)
 	free_map(&map);
 }
 
+void	free_and_exit(void *param)
+{
+	t_param	*pa;
+
+	pa = (t_param *)param;
+	free_map(&(pa->map));
+}
+
 int	main(int argc, char **argv)
 {
 	mlx_t			*mlx;
@@ -61,6 +69,7 @@ int	main(int argc, char **argv)
 		puts_error("mlx_init\n");
 	param.map = set_the_enemy(&param);
 	get_images(mlx, &param);
+	mlx_close_hook(mlx, free_and_exit, (void *)&param);
 	mlx_key_hook(mlx, ft_hook, (void *)&param);
 	mlx_loop_hook(mlx, ft_move_enemy, (void *)&param);
 	mlx_loop(mlx);
